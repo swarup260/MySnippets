@@ -11,13 +11,44 @@
 
     /* output :- [ 1,4,9] */
 
+    /* in_array */
+
+    $a = ['a','b','c','d'];
+
+    in_array('a',$a);
+    /* output :- true if present else false */
+
+```
+### PHP Function 
+
+
+```php
+
+    /* optimize to load csv file using yield */
+    function csvParser($filePath)
+    {
+        $file = fopen($filePath, "r") or die("unable to open");
+        $headers = array_map('trim', fgetcsv($file, 4096));
+        while (!feof($file)) {
+            $row = array_map('trim', (array) fgetcsv($file, 4096));
+            if (count($headers) !== count($row)) {
+                continue;
+            }
+            $row = array_combine($headers, $row);
+            yield $row;
+        }
+        fclose($file);
+        return;
+    }
+    /* get the csv data */
+
+    foreach(csvParser($filePath) as $value){
+        print_r($value);
+    }
+
 ```
 
-
 #Magento 2 Snippents
-
-
-# Magento Snippents
 ___
  
 ### Routing Mechanism
@@ -47,9 +78,12 @@ index.php -> HTTP application -> FrontController -> Routing -> Controller proces
 
 #MySql 
 
+
 **UPDATE & INSERT IN ONE QUERY:-**
 [For More info.](https://dev.mysql.com/doc/refman/8.0/en/insert-on-duplicate.html)
-
 ```mysql
-INSERT INTO `customer_entity_int` (`attribute_id`, `entity_id`, `value`) VALUES ( 282, 153, 3522 ) ON DUPLICATE KEY UPDATE `value`= 3522;
+INSERT INTO `TABLE_NAME` (`COLUMN_NAME`) VALUES ( COLUMN_VALUE ) ON DUPLICATE KEY UPDATE `COLUMN_NAME`= COLUMN_VALUE;
+
+/* get create table query of table */
+SHOW TABLE CREATE TABLE_NAME;
 ```
