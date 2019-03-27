@@ -73,7 +73,93 @@ index.php -> HTTP application -> FrontController -> Routing -> Controller proces
 2. %frontName%  :- **specifies the first segment after the base URL of a request.**
 3. %moduleName% :- **specifies the name of your module.**
 
+## basic observer 
 
+1. create folder name observer in module folder .
+
+```php
+
+<?php 
+
+namespace name;
+
+use Magento\Framework\Event\ObserverInterface;
+
+class className implements ObserverInterface
+{
+    public function execute(\Magento\Framework\Event\Observer $observer)
+    {
+        
+    }
+}
+
+
+```
+
+2. events.xml in module/etc/
+
+```xml 
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/Event/etc/events.xsd">
+    <event name="event_name">
+        <observer name="vendorName_ModuleName_ObserverName" instance="class_namespace" />
+    </event>
+</config>
+
+```
+
+## CronTab 
+
+
+```php 
+
+<?php
+
+namespace Mageplaza\HelloWorld\Cron;
+
+class ClassName
+{
+
+	public function execute()
+	{
+        \\logic
+
+	}
+}
+
+```
+
+
+```xml 
+
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="job_name" instance="classNamespce" method="execute">
+            <schedule>30 2 * * *</schedule>
+        </job>
+    </group>
+</config>
+
+```
+
+```
+    * * * * * command to be executed
+    | | | | |
+    | | | | +----- Day of week (0 - 7) (Sunday=0 or 7)
+    | | | +------- Month (1 - 12)
+    | | +--------- Day of month (1 - 31)
+    | +----------- Hour (0 - 23)
+    +------------- Minute (0 - 59)
+
+```
 
 
 #MySql 
