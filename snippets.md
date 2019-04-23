@@ -162,7 +162,7 @@ class ClassName
 ```
 
 
-#MySql 
+# MySql 
 
 
 **UPDATE & INSERT IN ONE QUERY:-**
@@ -175,7 +175,7 @@ SHOW TABLE CREATE TABLE_NAME;
 ```
 
 
-#JAVASCRIPT
+# JAVASCRIPT
 
 **Prase the url to key,value pair**
 ```javascript
