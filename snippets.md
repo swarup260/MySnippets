@@ -173,3 +173,14 @@ INSERT INTO `TABLE_NAME` (`COLUMN_NAME`) VALUES ( COLUMN_VALUE ) ON DUPLICATE KE
 /* get create table query of table */
 SHOW TABLE CREATE TABLE_NAME;
 ```
+
+
+#JAVASCRIPT
+
+**Prase the url to key,value pair**
+```javascript
+var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+```
